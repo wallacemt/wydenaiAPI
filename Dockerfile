@@ -1,11 +1,17 @@
-# Usar imagem base do PHP
-FROM php:8.0-apache
+# Use a imagem oficial do PHP como base
+FROM php:8.1-apache
 
-# Copiar arquivos para o diretório de trabalho
+# Instale as extensões necessárias
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Copie os arquivos do seu projeto para o diretório do Apache
+
+WORKDIR /var/www/html
+
 COPY . /var/www/html/
 
-# Instalar dependências necessárias
-RUN docker-php-ext-install mysqli
+RUN chown -R www-data:www-data /var/www/html
 
-# Configurar a porta do Apache
+# Exponha a porta 80
 EXPOSE 80
+
