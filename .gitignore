@@ -5,8 +5,6 @@
 # Ignorar arquivos de log
 *.log
 
-# Ignorar dependências do Composer
-/vendor/
 
 # Ignorar arquivos temporários ou de backup
 *.bak

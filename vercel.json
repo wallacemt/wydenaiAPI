@@ -1,15 +1,12 @@
 {
+  "builds": [
+    { "src": "vercel-build.sh", "use": "@vercel/static-build" }
+  ],
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.3"
     }
   },
-  "builds": [
-    {
-      "src": "vercel-build.sh",
-      "use": "@vercel/static-build"
-    }
-  ],
   "routes": [
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
