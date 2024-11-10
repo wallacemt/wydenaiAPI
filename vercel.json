@@ -1,13 +1,12 @@
 {
-  "builds": [
-    { "src": "vercel-build.sh", "use": "@vercel/static-build" }
-  ],
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.3"
     }
   },
   "routes": [
+    { "src": "/api/login", "dest": "/api/login.php" },
+    { "src": "/api/cadastro", "dest": "/api/cadastro.php" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
