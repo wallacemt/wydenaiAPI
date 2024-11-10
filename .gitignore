@@ -1,0 +1,20 @@
+# Ignorar arquivos de configuração do IDE
+.idea/
+.vscode/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar dependências do Composer
+/vendor/
+
+# Ignorar arquivos temporários ou de backup
+*.bak
+*.swp
+*.tmp
+
+# Ignorar o arquivo .env para não expor credenciais sensíveis
+.env
+
+# Ignorar pastas de cache ou de build
+/.vercel/

@@ -6,7 +6,7 @@
     switch ($requestMethod) {
         case 'GET':
             if (strpos($requestUri, '/') !== false) {
-               echo 'está rodando';
+               echo 'Api Funcionando';
             }
             break;
         default:
