@@ -6,14 +6,11 @@
   },
   "builds": [
     {
-      "src": "api/*.php",
-      "use": "@vercel/php",
-      "config": {
-        "composer": true
-      }
+      "src": "vercel-build.sh",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
-    { "src": "/(.*)",  "dest": "/api/index.php" }
+    { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
