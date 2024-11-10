@@ -4,9 +4,16 @@
       "runtime": "vercel-php@0.7.3"
     }
   },
+  "builds": [
+    {
+      "src": "api/*.php",
+      "use": "@vercel/php",
+      "config": {
+        "composer": true
+      }
+    }
+  ],
   "routes": [
-    { "src": "/api/login.php", "dest": "/api/login.php" },
-    { "src": "/api/cadastro.php", "dest": "/api/cadastro.php" },
-    { "src": "/(.*)", "dest": "/api/index.php" }
+    { "src": "/(.*)",  "dest": "/api/index.php" }
   ]
 }
