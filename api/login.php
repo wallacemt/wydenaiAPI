@@ -1,5 +1,8 @@
 <?php
-header('Content-Type: application/json');
+// Cabeçalhos para permitir CORS
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Conectando ao banco de dados
 require_once __DIR__ . '/../vendor/autoload.php';  // Caminho absoluto baseado na localização do script
@@ -30,23 +33,22 @@ if ($requestMethod === 'POST') {
         $email = $data['email'];
         $password = $data['password'];
 
-        // Buscar o usuário pelo email
-        $stmt = $pdo->prepare("SELECT id, password FROM usuarios WHERE email = :email");
+        // Buscar o usuario pelo email
+        $stmt = $pdo->prepare("SELECT id, password, curso, nome FROM usuarios WHERE email = :email");
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            // Gerar o chatToken
             $chatToken = bin2hex(random_bytes(16));
-
-            // Retornar id e chatToken
             echo json_encode([
                 'id' => $user['id'],
-                'chatToken' => $chatToken
+                'curso' => $user['curso'],
+                'nome'=> $user['nome'],
+                'chatToken' => $chatToken,
             ]);
         } else {
-            echo json_encode(['message' => 'Email ou senha inválidos']);
+            echo json_encode(['message' => 'Email ou senha invalidos']);
         }
     } else {
         echo json_encode(['message' => 'Dados incompletos']);

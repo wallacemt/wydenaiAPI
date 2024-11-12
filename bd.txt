@@ -1,0 +1,7 @@
+id: wyden-api
+senha: wydenapi2024
+
+
+USE WydenBD;
+
+

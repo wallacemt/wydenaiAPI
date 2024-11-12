@@ -1,5 +1,8 @@
 <?php
-header('Content-Type: application/json');
+// Cabeçalhos para permitir CORS
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Conectando ao banco de dados (certifique-se de atualizar os dados do seu banco)
 require_once __DIR__ . '/../vendor/autoload.php';  // Caminho absoluto baseado na localização do script
@@ -29,7 +32,7 @@ switch ($requestMethod) {
         $data = json_decode(file_get_contents('php://input'), true);
         
         if (isset($data['email']) && isset($data['nome']) && isset($data['password']) && isset($data['curso'])) {
-            // Verificar se o e-mail já existe no banco de dados
+            // Verificar se o e-mail ja existe no banco de dados
             $email = $data['email'];
             $stmt = $pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE email = :email");
             $stmt->bindParam(':email', $email);
@@ -37,7 +40,8 @@ switch ($requestMethod) {
             $count = $stmt->fetchColumn();
             
             if ($count > 0) {
-                echo json_encode(['message' => 'E-mail já cadastrado']);
+                echo json_encode(['message' => 'E-mail ja cadastrado']);
+                   
                 exit();
             }
 
@@ -54,9 +58,9 @@ switch ($requestMethod) {
             $stmt->bindParam(':curso', $curso);
 
             if ($stmt->execute()) {
-                echo json_encode(['message' => 'Usuário cadastrado com sucesso']);
+                echo json_encode(['message' => 'Usuario cadastrado com sucesso']);
             } else {
-                echo json_encode(['message' => 'Erro ao cadastrar usuário']);
+                echo json_encode(['message' => 'Erro ao cadastrar usuario']);
             }
         } else {
             echo json_encode(['message' => 'Dados incompletos']);
