@@ -1,6 +1,7 @@
 <?php
 // Carregar as variáveis do arquivo .env (se estiver usando a biblioteca vlucas/phpdotenv)
-require_once '../vendor/autoload.php'; 
+require_once __DIR__ . '/../vendor/autoload.php';  // Caminho absoluto baseado na localização do script
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();

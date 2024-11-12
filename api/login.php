@@ -2,7 +2,8 @@
 header('Content-Type: application/json');
 
 // Conectando ao banco de dados
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';  // Caminho absoluto baseado na localização do script
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
