@@ -5,13 +5,13 @@
 # Ignorar arquivos de log
 *.log
 
-# Ignorar dependências do Composer
-/vendor/
+
 
 # Ignorar arquivos temporários ou de backup
 *.bak
 *.swp
 *.tmp
+bd.txt
 
 # Ignorar o arquivo .env para não expor credenciais sensíveis
 .env
