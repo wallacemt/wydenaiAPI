@@ -4,11 +4,11 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-// Conectando ao banco de dados
+
 require_once __DIR__ . '/../vendor/autoload.php';  // Caminho absoluto baseado na localização do script
 
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 $host = $_ENV['DB_HOST'];
