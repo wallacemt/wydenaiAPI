@@ -30,8 +30,8 @@ if (!$chatToken) {
 }
 
 try {
-    $stmt = $pdo->prepare("SELECT * FROM chats WHERE id = ? AND chat_token = ?");
-    $stmt->execute([$chat_id, $chatToken]);
+    $stmt = $pdo->prepare("SELECT * FROM chats WHERE id = ?");
+    $stmt->execute([$chat_id]);
     $chat = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$chat) {
