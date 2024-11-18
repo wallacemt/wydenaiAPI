@@ -5,20 +5,8 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 
-require_once __DIR__ . '/../vendor/autoload.php'; 
-
-$host = getenv('DB_HOST');
-$dbname = getenv('DB_NAME');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo json_encode(['error' => 'Connection failed: ' . $e->getMessage()]);
-    exit();
-}
+require_once __DIR__ . '/../vendor/autoload.php';  
+require_once __DIR__ . '/db_connect.php';
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
