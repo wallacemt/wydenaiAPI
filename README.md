@@ -42,6 +42,7 @@ backend/
 <p align="center">
   <img src="./api/WydenAIDB.png" alt="Diagrama do BD" style="border-radius: 10px" />
 </p>
+
 ## 🌟 Funcionalidades
 - 🔑 Autenticação: Login e registro de usuários com validação de credenciais.
 - 💬 Gerenciamento de Chats:
